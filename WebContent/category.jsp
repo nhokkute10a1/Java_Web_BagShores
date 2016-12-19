@@ -4,15 +4,14 @@
 <%@ page import="Dao.LoaiSanPham_Dao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 
 </head>
 <body>
-	<%
-		LoaiSanPham_Dao loaiDAO = new LoaiSanPham_Dao();
-	%>
+
 	<div class="col-sm-3">
 		<div class="left-sidebar">
 			<h2>DANH MỤC</h2>
@@ -30,20 +29,14 @@
 					<div id="sportswear" class="panel-collapse collapse">
 						<div class="panel-body">
 							<ul>
-								<%
-									for (Loaisanpham loai : loaiDAO.findAll()) {
-								%>
-								<li><a href="product.jsp?category=<%=loai.getMaLoai()%>"><%=loai.getTenLoai()%>
-								</a></li>
-								<%
-									}
-								%>
-
+								<c:forEach var="danhmuc" items="${listCategory}">
+								</c:forEach>
+								<li><a href="SanPham.jsp?category=${danhmuc.maLoai}">${danhmuc.tenLoai}</a></li>
 							</ul>
 						</div>
 					</div>
 				</div>
-				<div class="panel panel-default">
+<%-- 	<div class="panel panel-default">
 					<div class="panel-heading">
 						<h4 class="panel-title">
 							<a data-toggle="collapse" data-parent="#accordian" href="#mens">
@@ -55,14 +48,10 @@
 					<div id="mens" class="panel-collapse collapse">
 						<div class="panel-body">
 							<ul>
-								<%
-									for (Loaisanpham loai : loaiDAO.findAll()) {
-								%>
+								<%for (Loaisanpham loai : loaiDAO.findAll()) {%>
 								<li><a href="product.jsp?category=<%=loai.getMaLoai()%>"><%=loai.getTenLoai()%>
 								</a></li>
-								<%
-									}
-								%>
+								<%}%>
 
 							</ul>
 						</div>
@@ -81,14 +70,10 @@
 					<div id="womens" class="panel-collapse collapse">
 						<div class="panel-body">
 							<ul>
-								<%
-									for (Loaisanpham loai : loaiDAO.findAll()) {
-								%>
+								<%for (Loaisanpham loai : loaiDAO.findAll()) {%>
 								<li><a href="product.jsp?category=<%=loai.getMaLoai()%>"><%=loai.getTenLoai()%>
 								</a></li>
-								<%
-									}
-								%>
+								<%}%>
 							</ul>
 						</div>
 					</div>
@@ -100,25 +85,19 @@
 						</h4>
 					</div>
 				</div>
-
+- --%>
 			</div>
 			<!--/category-products-->
-			<%
-				NhaSanXuat_DAO nhasanxuat_DAO = new NhaSanXuat_DAO();
-			%>
 			<div class="brands_products">
 				<!--brands_products-->
 				<h2>THƯƠNG HIỆU</h2>
 				<div class="brands-name">
 					<ul class="nav nav-pills nav-stacked">
-						<%
-							for (Nhasanxuat nsx : nhasanxuat_DAO.findAll()) {
-						%>
-						<li><a href="product.jsp?category=<%=nsx.getMaNhaSanXuat()%>"><%=nsx.getTenNhaSanXuat()%>
-						</a></li>
-						<%
-							}
-						%>
+						<c:forEach var="nhasanxuat" items="${listBrand}">
+						<li><a href="product.jsp?category=${nhasanxuat.maNhaSanXuat}">${nhasanxuat.tenNhaSanXuat}</a></li>
+						</c:forEach>
+						
+						
 					</ul>
 				</div>
 			</div>

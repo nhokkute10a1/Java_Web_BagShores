@@ -35,7 +35,7 @@ public class LoaiSanPham_Dao {
 				session.getTransaction().begin();
 			}
 			// viet Query là sử dụng HQL
-			Query query = session.createQuery("select c " + "from Loaisanpham c");
+			Query query = session.createQuery("From Loaisanpham");
 			return query.list();
 		}
 		catch (Exception ex) {

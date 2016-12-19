@@ -34,12 +34,43 @@ public class SanPham_DAO {
 			if (!session.getTransaction().isActive()) {
 				session.getTransaction().begin();
 			}
-			Query query = session.createQuery("FROM Sanpham c WHERE maLoai='" + maloai + "' ORDER BY c.maSanPham DESC");
+			Query query = session.createQuery("FROM Sanpham c WHERE maLoai='" + maloai + "'");
 			return query.list();
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
 			return null;
 		}
+	}
+
+	public List<Sanpham> ListSanPhamNSX(int maNSX) {
+		try {
+			if (!session.getTransaction().isActive()) {
+				session.getTransaction().begin();
+			}
+			Query query = session.createQuery("FROM Sanpham c WHERE maNhaSanXuat='" + maNSX + "'");
+			return query.list();
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+	}
+
+	public Sanpham getSanPham(int masanpham) {
+		Sanpham sp = null;
+		try {
+			if (!session.getTransaction().isActive()) {
+				session.getTransaction().begin();
+			}
+			sp = (Sanpham) session.createQuery("FROM Sanpham c WHERE maSanPham='" + masanpham + "'").uniqueResult();
+
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
+		return sp;
+
 	}
 }

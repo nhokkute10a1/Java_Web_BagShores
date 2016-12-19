@@ -1,9 +1,6 @@
 package Main;
 
-import java.util.List;
-
 import Dao.SanPham_DAO;
-import Entities.Sanpham;
 
 public class web_bag {
 	public static void main(String[] args) {
@@ -39,20 +36,22 @@ public class web_bag {
 		// System.out.println("==================================");
 		// }
 		// THEO MA LOAI
-		List<Sanpham> listsp = sp.ListSanPhamDanhMuc(1);
-		System.out.println("Theo ma loai: " + listsp.size());
-		for (Sanpham s1 : listsp) {
-			System.out.println("Id: " + s1.getMaSanPham());
-			System.out.println("Id: " + s1.getMaLoai());
-			System.out.println("Id: " + s1.getMaNhaSanXuat());
-			System.out.println("Id: " + s1.getTenSanPham());
-			System.out.println("Id: " + s1.getGiaBan());
-			System.out.println("Id: " + s1.getMoTa());
-			System.out.println("Id: " + s1.getAnhBia());
-			System.out.println("Id: " + s1.getNgayCapNhap());
-			System.out.println("Id: " + s1.getSoLuongTon());
-			System.out.println("Id: " + s1.isGioiTinh());
-			System.out.println("==================================");
-		}
+		// List<Sanpham> listsp = sp.ListSanPhamDanhMuc(1);
+		// System.out.println("Theo ma loai: " + listsp.size());
+		// for (Sanpham s1 : listsp) {
+		// System.out.println("Id: " + s1.getMaSanPham());
+		// System.out.println("Id: " + s1.getMaLoai());
+		// System.out.println("Id: " + s1.getMaNhaSanXuat());
+		// System.out.println("Id: " + s1.getTenSanPham());
+		// System.out.println("Id: " + s1.getGiaBan());
+		// System.out.println("Id: " + s1.getMoTa());
+		// System.out.println("Id: " + s1.getAnhBia());
+		// System.out.println("Id: " + s1.getNgayCapNhap());
+		// System.out.println("Id: " + s1.getSoLuongTon());
+		// System.out.println("Id: " + s1.isGioiTinh());
+		// System.out.println("==================================");
+		// }
+		// lay 1 sp
+		System.out.println(sp.getSanPham(3).getTenSanPham());
 	}
 }

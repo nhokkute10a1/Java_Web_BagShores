@@ -2,43 +2,33 @@
 <%@page import="Dao.SanPham_DAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 
 </head>
 <body>
-	<%
-		SanPham_DAO sp_Dao = new SanPham_DAO();
-		/* 	String maLoai = "";
-			if (request.getParameter("category") != null) {
-				maLoai = request.getParameter("category");
-			} */
-	%>
 	<div class="col-sm-9 padding-right">
 		<div class="features_items">
 			<!--features_items-->
 			<h2 class="title text-center">SẢN PHẨM</h2>
-			<%
-				for (Sanpham sp : sp_Dao.ListSanPham()) {
-					/* for (Sanpham sp : sp_Dao.ListSanPhamDanhMuc(Integer.parseInt(maLoai))) { */
-			%>
-			<div class="col-sm-4">
-				<div class="product-image-wrapper">
-					<div class="single-products">
-						<div class="productinfo text-center">
-							<a href="Details.jsp"><img src="<%=sp.getAnhBia() %>" alt="<%=sp.getTenSanPham() %>" width="255px" height="270px" /></a>
-							<h2><%=sp.getGiaBan() %></h2>
-							<a href="Details.jsp"> <span><%=sp.getTenSanPham() %></span></a> 
-							<a href="#" class="btn btn-default add-to-cart"><i
-								class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
+			<c:forEach var="sanpham" items="${listCategory}">
+				<div class="col-sm-4">
+					<div class="product-image-wrapper">
+						<div class="single-products">
+							<div class="productinfo text-center">
+								<a href="Details.jsp"><img src="${sanpham.anhBia}"
+									alt="${sanpham.tenSanPham}" width="255px" height="270px" /></a>
+								<h2>${sanpham.giaBan}</h2>
+								<a href="Details.jsp"> <span>${sanpham.tenSanPham}</span></a> <a
+									href="#" class="btn btn-default adFd-to-cart"><i
+									class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-			<%
-				}
-			%>
+			</c:forEach>
 
 
 		</div>
@@ -461,7 +451,6 @@
 		</div>
 		<!--/recommended_items-->
 
-	</div>
 	</div>
 </body>
 </html>

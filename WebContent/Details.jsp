@@ -1,73 +1,122 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Stylish - Chi Tiết Sản Phẩm</title>
-<link rel="shortcut icon" href="images/logo.ico" type="image/x-icon" />
-<!-- Custom Theme files -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords"
-	content="Stylish Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-		Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript">
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-</script>
-<!-- //Custom Theme files -->
-<link href="css/bootstrap.css" type="text/css" rel="stylesheet"
-	media="all">
-<link href="css/style.css" type="text/css" rel="stylesheet" media="all">
-<link rel="stylesheet" href="css/flexslider.css" type="text/css"
-	media="screen" />
-<!-- js -->
-<script src="js/jquery-1.11.1.min.js"></script>
-<!-- //js -->
-<!-- start-smoth-scrolling-->
-<script type="text/javascript" src="js/move-top.js"></script>
-<script type="text/javascript" src="js/easing.js"></script>
-<script type="text/javascript">
-	jQuery(document).ready(function($) {
-		$(".scroll").click(function(event) {
-			event.preventDefault();
-			$('html,body').animate({
-				scrollTop : $(this.hash).offset().top
-			}, 1000);
-		});
-	});
-</script>
-<!--//end-smoth-scrolling-->
-<!--pop-up-->
-<script src="js/menu_jquery.js"></script>
-<!--//pop-up-->
-<!-- body -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/font-awesome.min.css" rel="stylesheet">
-<link href="css/prettyPhoto.css" rel="stylesheet">
-<link href="css/price-range.css" rel="stylesheet">
-<link href="css/animate.css" rel="stylesheet">
-<link href="css/main.css" rel="stylesheet">
-<link href="css/responsive.css" rel="stylesheet">
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.scrollUp.min.js"></script>
-<script src="js/price-range.js"></script>
-<script src="js/jquery.prettyPhoto.js"></script>
-<script src="js/main.js"></script>
+<jsp:include page="header.jsp"></jsp:include>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+
 	<section style="margin-top: 50px;">
 	<div class="container">
 		<div class="row">
-			<jsp:include page="category.jsp"></jsp:include>
+			<!-- Danh Muc -->
+			<div class="col-sm-3">
+				<div class="left-sidebar">
+					<h2>DANH MỤC</h2>
+					<div class="panel-group category-products" id="accordian">
+						<!--category-productsr-->
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordian"
+										href="#sportswear"> <span class="badge pull-right"><i
+											class="fa fa-plus"></i></span> UNISEX
+									</a>
+								</h4>
+							</div>
+							<div id="sportswear" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul>
+										<c:forEach var="danhmuc" items="${listCategory}">
+											<li><a href="SanPham?category=${danhmuc.maLoai}">${danhmuc.tenLoai}</a></li>
+										</c:forEach>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordian" href="#mens">
+										<span class="badge pull-right"><i class="fa fa-plus"></i></span>
+										NAM
+									</a>
+								</h4>
+							</div>
+							<div id="mens" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul>
+										<c:forEach var="danhmuc" items="${listCategory}">
+											<li><a href="SanPham?category=${danhmuc.maLoai}">${danhmuc.tenLoai}</a></li>
+										</c:forEach>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" data-parent="#accordian"
+										href="#womens"> <span class="badge pull-right"><i
+											class="fa fa-plus"></i></span> NỮ
+									</a>
+								</h4>
+							</div>
+							<div id="womens" class="panel-collapse collapse">
+								<div class="panel-body">
+									<ul>
+										<c:forEach var="danhmuc" items="${listCategory}">
+											<li><a href="SanPham?category=${danhmuc.maLoai}">${danhmuc.tenLoai}</a></li>
+										</c:forEach>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a href="#">KHUYẾN MÃI</a>
+								</h4>
+							</div>
+						</div>
+					</div>
+					<!--/category-products-->
+					<div class="brands_products">
+						<!--brands_products-->
+						<h2>THƯƠNG HIỆU</h2>
+						<div class="brands-name">
+							<ul class="nav nav-pills nav-stacked">
+								<c:forEach var="nhasanxuat" items="${listBrand}">
+									<li><a href="SanPham?category=${nhasanxuat.maNhaSanXuat}">${nhasanxuat.tenNhaSanXuat}</a></li>
+								</c:forEach>
+
+
+							</ul>
+						</div>
+					</div>
+					<!--/brands_products-->
+					<div class="shipping text-center">
+						<!--shipping-->
+						<img src="images/home/shipping.jpg" alt="" />
+					</div>
+					<!--/shipping-->
+
+				</div>
+			</div>
+			<!-- Danh Mục -->
+
+			<!-- Details -->
 			<div class="col-sm-9 padding-right">
 				<div class="product-details">
 					<!--product-details-->
+					<!-- Anh -->
 					<div class="col-sm-5">
 						<div class="view-product">
-							<img src="images/product-details/1.jpg" alt="" />
+							<img src="${getProduct1.anhBia}" alt="" />
 							<h3>ZOOM</h3>
 						</div>
 						<div id="similar-product" class="carousel slide"
@@ -76,27 +125,9 @@
 							<!-- Wrapper for slides -->
 							<div class="carousel-inner">
 								<div class="item active">
-									<a href=""><img src="images/product-details/similar1.jpg"
-										alt=""></a> <a href=""><img
-										src="images/product-details/similar2.jpg" alt=""></a> <a
-										href=""><img src="images/product-details/similar3.jpg"
-										alt=""></a>
+									<a href=""><img src="${getProduct1.anhBia}" alt=""
+										width="120px"></a>
 								</div>
-								<div class="item">
-									<a href=""><img src="images/product-details/similar1.jpg"
-										alt=""></a> <a href=""><img
-										src="images/product-details/similar2.jpg" alt=""></a> <a
-										href=""><img src="images/product-details/similar3.jpg"
-										alt=""></a>
-								</div>
-								<div class="item">
-									<a href=""><img src="images/product-details/similar1.jpg"
-										alt=""></a> <a href=""><img
-										src="images/product-details/similar2.jpg" alt=""></a> <a
-										href=""><img src="images/product-details/similar3.jpg"
-										alt=""></a>
-								</div>
-
 							</div>
 
 							<!-- Controls -->
@@ -108,29 +139,32 @@
 						</div>
 
 					</div>
+					<!-- Anh -->
+					<!-- NoiDung -->
 					<div class="col-sm-7">
 						<div class="product-information">
 							<!--/product-information-->
 							<img src="images/product-details/new.jpg" class="newarrival"
 								alt="" />
-							<h2>Anne Klein Sleeveless Colorblock Scuba</h2>
-							<p>Web ID: 1089772</p>
-							<img src="images/product-details/rating.png" alt="" /> <span>
-								<span>US $59</span> <label>Quantity:</label> <input type="text"
-								value="3" />
-								<button type="button" class="btn btn-fefault cart">
-									<i class="fa fa-shopping-cart"></i> Add to cart
-								</button>
-							</span>
-							<p>
-								<b>Availability:</b> In Stock
+
+							<h2>${getProduct1.tenSanPham}</h2>
+							<p style="text-align: justify">
+								<span style="font-weight: bold">Mô tả:</span>${getProduct1.moTa}</p>
+							<p style="font-weight: bold">
+								Giá bán:<label style="color: red; font-size: 16pt">${getProduct1.giaBan}
+									VNĐ</label>
 							</p>
-							<p>
-								<b>Condition:</b> New
-							</p>
-							<p>
-								<b>Brand:</b> E-SHOPPER
-							</p>
+							<%-- <img src="${getProduct1.anhBia}" alt="" /> <span> <span>US
+									$59</span> <label>Quantity:</label> <input type="text" value="3" /> --%>
+							<div class="form-group">
+								<label>Số lượng:</label> <input id="soluong" type="number"
+									name="soluong" value="1" min="1" max="100" class="form-control"
+									style="width: 75px" /> <input id="product_id_for_wishlist"
+									name="id" type="hidden" value="92969">
+							</div>
+							<button type="button" class="btn btn-fefault cart">
+								<i class="fa fa-shopping-cart"></i> Thêm Giỏ Hàng
+							</button>
 							<a href=""><img src="images/product-details/share.png"
 								class="share img-responsive" alt="" /></a>
 						</div>
