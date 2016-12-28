@@ -1,3 +1,4 @@
+<%@page import="Entities.GioHang"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -7,7 +8,13 @@
 <jsp:include page="header.jsp"></jsp:include>
 </head>
 <body>
-
+	<%
+		GioHang cart = (GioHang) session.getAttribute("cart");
+		if (cart == null) {
+			cart = new GioHang();
+			session.setAttribute("cart", cart);
+		}
+	%>
 	<jsp:include page="banner.jsp"></jsp:include>
 	<section style="margin-top: 50px;">
 	<div class="container">
@@ -92,8 +99,7 @@
 						<div class="brands-name">
 							<ul class="nav nav-pills nav-stacked">
 								<c:forEach var="nhasanxuat" items="${listBrand}">
-									<li><a
-										href="SanPham?category=${nhasanxuat.maNhaSanXuat}">${nhasanxuat.tenNhaSanXuat}</a></li>
+									<li><a href="SanPham?category=${nhasanxuat.maNhaSanXuat}">${nhasanxuat.tenNhaSanXuat}</a></li>
 								</c:forEach>
 
 
@@ -114,18 +120,23 @@
 			<div class="col-sm-9 padding-right">
 				<div class="features_items">
 					<!--features_items-->
+
 					<h2 class="title text-center">SẢN PHẨM</h2>
 					<c:forEach var="sanpham" items="${listProduct}">
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<a href="GetSanPham?product=${sanpham.maSanPham}"><img src="${sanpham.anhBia}"alt="${sanpham.tenSanPham}" width="255px" height="270px" /></a>
-										
-										<h2>${sanpham.giaBan}</h2>
+										<a href="GetSanPham?product=${sanpham.maSanPham}"><img
+											src="${sanpham.anhBia}" alt="${sanpham.tenSanPham}"
+											width="255px" height="270px" /></a>
+
+										<h2>${sanpham.giaBan} VNĐ</h2>
 										<!-- SanPham?category=${nhasanxuat.maNhaSanXuat} -->
 										<a href="GetSanPham?product=${sanpham.maSanPham}"> <span>${sanpham.tenSanPham}</span></a>
-										<a href="#" class="btn btn-default adFd-to-cart"><i
+										<a
+											href="GioHangController?command=insert&maSanPham=${sanpham.maSanPham}&maGioHang=${System.currentTimeMillis()}"
+											class="btn btn-default adFd-to-cart"><i
 											class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
 									</div>
 								</div>

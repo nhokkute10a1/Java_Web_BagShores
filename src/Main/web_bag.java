@@ -52,6 +52,6 @@ public class web_bag {
 		// System.out.println("==================================");
 		// }
 		// lay 1 sp
-		System.out.println(sp.getSanPham(3).getTenSanPham());
+		// System.out.println(sp.getSanPham(3).getTenSanPham());
 	}
 }

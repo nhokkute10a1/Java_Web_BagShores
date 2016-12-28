@@ -1,3 +1,7 @@
+<%@page import="java.util.Map"%>
+<%@page import="java.util.TreeMap"%>
+<%@page import="Entities.Sanpham"%>
+<%@page import="Entities.GioHang"%>
 <%@page import="Dao.LoaiSanPham_Dao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -14,7 +18,19 @@
 	content="Stylish Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
 		Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript">
+	
+	
+	
+	
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
+
+
+
+
 </script>
 <!-- //Custom Theme files -->
 <link href="css/bootstrap.css" type="text/css" rel="stylesheet"
@@ -57,10 +73,18 @@
 <script src="js/jquery.prettyPhoto.js"></script>
 <script src="js/main.js"></script>
 <!-- Details -->
- <script src="js/imagezoom.js"></script>
+<script src="js/imagezoom.js"></script>
 
 </head>
 <body>
+	<%
+		GioHang cart = (GioHang) session.getAttribute("cart");
+		if (cart == null) {
+			cart = new GioHang();
+			session.setAttribute("cart", cart);
+		}
+		TreeMap<Sanpham, Integer> list = cart.getListSanPham();
+	%>
 	<!--header-->
 	<div class="header">
 		<div class="container">
@@ -98,12 +122,13 @@
 			<div class="top-nav">
 				<span class="menu"><img src="images/menu.png" alt="" /></span>
 				<ul>
-					<li><a class="active" href="Index">Home</a></li>
+					<li><a class="active" href="Index">Trang Chủ</a></li>
 					<li><a href="about.html">About</a></li>
 					<li><a href="gallery.html">Gallery</a></li>
 					<li><a href="news.html">News</a></li>
 					<li><a href="codes.html">Codes</a></li>
 					<li><a href="contact.html">Contact</a></li>
+
 				</ul>
 				<!-- script-for-menu -->
 				<script>
@@ -113,6 +138,14 @@
 					});
 				</script>
 				<!-- script-for-menu -->
+			</div>
+			<div class="gio-hang">
+				<a
+					href="cart.jsp"
+					class="cart-in"><span
+					class="glyphicon glyphicon-shopping-cart"></span>Giỏ Hàng</a><span>(<%=cart.countItem()%>)
+				</span>
+
 			</div>
 			<div class="search-box">
 				<div id="sb-search" class="sb-search">
@@ -132,6 +165,7 @@
 				new UISearch(document.getElementById('sb-search'));
 			</script>
 			<!-- //search-scripts -->
+
 		</div>
 	</div>
 	<!--//header-->

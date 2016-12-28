@@ -57,14 +57,13 @@ public class SanPham_DAO {
 		}
 	}
 
-	public Sanpham getSanPham(int masanpham) {
+	public Sanpham getSanPham(String maSP) {
 		Sanpham sp = null;
 		try {
 			if (!session.getTransaction().isActive()) {
 				session.getTransaction().begin();
 			}
-			sp = (Sanpham) session.createQuery("FROM Sanpham c WHERE maSanPham='" + masanpham + "'").uniqueResult();
-
+			sp = (Sanpham) session.createQuery("FROM Sanpham c WHERE maSanPham='" + maSP + "'").uniqueResult();
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());

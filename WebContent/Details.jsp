@@ -5,6 +5,7 @@
 <html>
 <head>
 <jsp:include page="header.jsp"></jsp:include>
+<script src="js/myJavaScrip.js"></script>
 </head>
 <body>
 
@@ -156,14 +157,17 @@
 							<%-- <img src="${getProduct1.anhBia}" alt="" /> <span> <span>US
 									$59</span> <label>Quantity:</label> <input type="text" value="3" /> --%>
 							<div class="form-group">
-								<label>Số lượng:</label> <input id="soluong" type="number"
-									name="soluong" value="1" min="1" max="100" class="form-control"
+								<label>Số lượng:</label> 
+								<input id="soLuong" type="number"
+									name="soLuong" value="1" min="1" max="100" class="form-control"
 									style="width: 75px" /> <input id="product_id_for_wishlist"
-									name="id" type="hidden" value="92969">
+									name="id" type="hidden" value="92969"> 
+									 <!-- <input type="number" id="myNumber" value="1">-->
 							</div>
-							<button type="button" class="btn btn-fefault cart">
-								<i class="fa fa-shopping-cart"></i> Thêm Giỏ Hàng
-							</button>
+								<a href="GioHangController?command=insert&maSanPham=${getProduct1.maSanPham}&maGioHang=${System.currentTimeMillis()}"
+									class="btn btn-success" onclick="myFunction()">
+									<i class="fa fa-shopping-cart"></i> Thêm Giỏ Hàng
+								</a>
 							<a href=""><img src="images/product-details/share.png"
 								class="share img-responsive" alt="" /></a>
 						</div>

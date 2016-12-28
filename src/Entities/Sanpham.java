@@ -1,11 +1,13 @@
 package Entities;
 // Generated Dec 17, 2016 4:50:57 PM by Hibernate Tools 5.2.0.CR1
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -16,7 +18,7 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "sanpham", catalog = "qlbantuisach")
-public class Sanpham implements java.io.Serializable {
+public class Sanpham implements Comparable<Sanpham> {
 
 	private Integer maSanPham;
 
@@ -146,6 +148,12 @@ public class Sanpham implements java.io.Serializable {
 
 	public void setGioiTinh(boolean gioiTinh) {
 		this.gioiTinh = gioiTinh;
+	}
+
+	@Override
+	public int compareTo(Sanpham sp) {
+		// TODO Auto-generated method stub
+		return this.maSanPham - sp.maSanPham;
 	}
 
 }

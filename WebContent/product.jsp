@@ -1,3 +1,4 @@
+<%@page import="Entities.GioHang"%>
 <%@page import="Entities.Sanpham"%>
 <%@page import="Dao.SanPham_DAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -9,9 +10,18 @@
 
 </head>
 <body>
+<%-- 
+	<%
+		GioHang cart = (GioHang) session.getAttribute("cart");
+		if (cart == null) {
+			cart = new GioHang();
+			session.setAttribute("cart", cart);
+		}
+	%> --%>
 	<div class="col-sm-9 padding-right">
 		<div class="features_items">
 			<!--features_items-->
+			<h3>${t}</h3>
 			<h2 class="title text-center">SẢN PHẨM</h2>
 			<c:forEach var="sanpham" items="${listCategory}">
 				<div class="col-sm-4">
@@ -21,9 +31,13 @@
 								<a href="Details.jsp"><img src="${sanpham.anhBia}"
 									alt="${sanpham.tenSanPham}" width="255px" height="270px" /></a>
 								<h2>${sanpham.giaBan}</h2>
-								<a href="Details.jsp"> <span>${sanpham.tenSanPham}</span></a> <a
-									href="#" class="btn btn-default adFd-to-cart"><i
-									class="fa fa-shopping-cart"></i>Thêm Vào Giỏ</a>
+								<a href="Details.jsp"> <span>${sanpham.tenSanPham}</span></a>
+								
+								<!-- ?command=insert&maSanPham=${sanpham.getMaSanPham()}&maGioHang=${System.currentTimeMillis()} -->
+								<a href="GioHangController"
+									 class="btn btn-default adFd-to-cart"> <i
+									class="fa fa-shopping-cart"></i>Thêm Vào Giỏ
+								</a>
 							</div>
 						</div>
 					</div>
