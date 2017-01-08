@@ -24,7 +24,15 @@
 	
 	
 	
+	
+	
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
+
+
 
 
 
@@ -84,36 +92,54 @@
 			session.setAttribute("cart", cart);
 		}
 		TreeMap<Sanpham, Integer> list = cart.getListSanPham();
+		
+		String err="";
+		if(request.getAttribute("err")!=null)
+		{
+			err=(String)request.getAttribute("err");
+		}
 	%>
 	<!--header-->
 	<div class="header">
 		<div class="container">
 			<div class="header-left">
 				<ul>
-					<li><a href="account.html">ACCOUNT</a></li>
+					<%
+						if (session.getAttribute("taikhoan") != null) {
+					%>
+					<li><a style="color: blue;">Chào: <%=session.getAttribute("taikhoan")%></a></li>
+					<li><a href="DangNhapServlet?command=dangxuat">ĐĂNG XUẤT</a></li>
+					<%
+						} else {
+					%>
+					<li><a href="account.jsp">ĐĂNG KÝ</a></li>
 					<li class="login">
 						<div id="loginContainer">
-							<a href="#" id="loginButton"><span>LOGIN</span></a>
+							<a href="account.jsp" id="loginButton"><span>ĐĂNG NHẬP</span></a>
 							<div id="loginBox">
-								<form id="loginForm">
+								<form id="loginForm" action="DangNhapServlet" method="post">
 									<fieldset id="body">
+									<p style="color: red;"><%=err%></p>
 										<fieldset>
-											<label for="email">Email Address</label> <input type="text"
-												name="email" id="email">
+											<label for="taiKhoan">Tài Khoản</label> <input type="text"
+												name="taikhoan" id="email">
 										</fieldset>
 										<fieldset>
-											<label for="password">Password</label> <input type="password"
-												name="password" id="password">
+											<label for="matKhau">Mật Khẩu</label> <input type="password"
+												name="matkhau" id="password">
 										</fieldset>
-										<input type="submit" id="login" value="Sign in"> <label
+										<input type="submit" id="login" value="ĐĂNG NHẬP"> <label
 											for="checkbox"><input type="checkbox" id="checkbox">
-											<i>Remember me</i></label>
+											<i>Ghi nhớ tài khoản</i></label>
 									</fieldset>
 									<span><a href="#">Forgot your password?</a></span>
 								</form>
 							</div>
 						</div>
 					</li>
+					<%
+						}
+					%>
 				</ul>
 			</div>
 			<div class="logo">
@@ -140,9 +166,7 @@
 				<!-- script-for-menu -->
 			</div>
 			<div class="gio-hang">
-				<a
-					href="cart.jsp"
-					class="cart-in"><span
+				<a href="cart.jsp" class="cart-in"><span
 					class="glyphicon glyphicon-shopping-cart"></span>Giỏ Hàng</a><span>(<%=cart.countItem()%>)
 				</span>
 

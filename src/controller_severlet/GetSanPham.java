@@ -1,4 +1,4 @@
-package controller;
+package controller_severlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -50,7 +50,7 @@ public class GetSanPham extends HttpServlet {
 		String maSp = request.getParameter("product");
 		String maSP = maSp;
 		SanPham_DAO sp1 = new SanPham_DAO();
-		Sanpham a = sp1.getSanPham(maSP);
+		Sanpham a = sp1.getSanPham(Integer.parseInt(maSp));
 		request.setAttribute("getProduct1", a);
 
 		// chuyen trang

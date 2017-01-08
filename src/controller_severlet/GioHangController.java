@@ -1,4 +1,4 @@
-package controller;
+package controller_severlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -59,7 +59,7 @@ public class GioHangController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setCharacterEncoding("utf-8");
 
-		String masp = request.getParameter("maSanPham");
+		String maSanPham = request.getParameter("maSanPham");
 		String command = request.getParameter("command");
 		ArrayList<Long> listMua = null;
 		String url = "/cart.jsp";
@@ -77,7 +77,7 @@ public class GioHangController extends HttpServlet {
 				idBuy = Long.parseLong(request.getParameter("maGioHang"));
 			}
 
-			Sanpham sp = sp_dao.getSanPham(masp);
+			Sanpham sp = sp_dao.getSanPham(Integer.parseInt(maSanPham));
 
 			switch (command) {
 			case "insert":
@@ -136,6 +136,7 @@ public class GioHangController extends HttpServlet {
 		}
 		catch (Exception e) {
 			// TODO: handle exception
+			log("Error", e);
 		}
 
 	}

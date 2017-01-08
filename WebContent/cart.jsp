@@ -23,9 +23,6 @@
 	
 	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-
-
-
 </script>
 <!-- //Custom Theme files -->
 <link href="css/bootstrap.css" type="text/css" rel="stylesheet"
@@ -83,7 +80,6 @@
 		//nf.setMinimumIntegerDigits(0);
 		ArrayList<Long> sum = new ArrayList();
 		//ArrayList<Double> sum = new ArrayList();
-
 		Long abc;
 	%>
 

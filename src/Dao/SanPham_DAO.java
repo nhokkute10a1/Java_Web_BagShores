@@ -57,7 +57,7 @@ public class SanPham_DAO {
 		}
 	}
 
-	public Sanpham getSanPham(String maSP) {
+	public Sanpham getSanPham(int maSP) {
 		Sanpham sp = null;
 		try {
 			if (!session.getTransaction().isActive()) {

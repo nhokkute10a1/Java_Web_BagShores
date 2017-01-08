@@ -3,3 +3,5 @@ encoding//src/Dao/LoaiSanPham_Dao.java=UTF-8
 encoding//src/Dao/NhaSanXuat_DAO.java=UTF-8
 encoding//src/Main/web_bag.java=UTF-8
 encoding//src/Model/HibernateUtil.java=UTF-8
+encoding//src/controller_severlet/DangKyController.java=UTF-8
+encoding//src/controller_severlet/DangNhapServlet.java=UTF-8
