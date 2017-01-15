@@ -22,7 +22,11 @@
 	
 	
 	
+	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
 </script>
 <!-- //Custom Theme files -->
 <link href="css/bootstrap.css" type="text/css" rel="stylesheet"
@@ -127,15 +131,15 @@
 						</td>
 						<td class="cart_quantity">
 							<div class="cart_quantity_button">
-								 <a class="cart_quantity_up"
+								<a class="cart_quantity_up"
 									href="GioHangController?command=plus&maSanPham=<%=ds.getKey().getMaSanPham()%>
 										&maGioHang=<%=System.currentTimeMillis()%>">
 									+ </a> <input class="cart_quantity_input" type="text"
 									name="quantity" value="<%=ds.getValue()%>" autocomplete="off"
 									size="2" disabled=""> <a class="cart_quantity_down"
 									href="GioHangController?command=sub&maSanPham=<%=ds.getKey().getMaSanPham()%>&maGioHang=<%=System.currentTimeMillis()%>">
-									- </a> 
-									 <!-- <input id="Soluong" type="number"
+									- </a>
+								<!-- <input id="Soluong" type="number"
 									name="soluong" value="1" min="1" max="100" class="form-control"
 									style="width: 75px" /> <input id="product_id_for_wishlist"
 									name="id" type="hidden" value="92969"> 
@@ -152,7 +156,7 @@
 							href="GioHangController?command=remove&maSanPham=<%=ds.getKey().getMaSanPham()%>&maGioHang=<%=System.currentTimeMillis()%>">
 								<i class="fa fa-times"></i>
 						</a></td>
-						
+
 					</tr>
 
 					<%
@@ -181,10 +185,20 @@
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2"><a class="btn btn-success" href="Index">Tiếp Tục Mua
-								Hàng</a> <a class="btn btn-danger "
-							href="GioHangController?command=cancel">Hủy Đơn Hàng</a></td>
-						
+						<td colspan="2">
+							<div class="row">
+								<div class="col-sm-6" style="background-color:lavender;">
+									<a class="btn btn-success" href="Index">Tiếp Tục Mua Hàng</a> <a
+										class="btn btn-danger "
+										href="GioHangController?command=cancel">Hủy Đơn Hàng</a>
+								</div>
+								<div class="col-sm-6" style="background-color:lavenderblush;">
+									<a class="btn btn-success"  style="text-align: right;" href="CheckoutServlet?maKhachHang=${khachhang.maKhachHang}">Thanh
+										Toán</a>
+								</div>
+							</div>
+						</td>
+
 					</tr>
 				</tbody>
 			</table>

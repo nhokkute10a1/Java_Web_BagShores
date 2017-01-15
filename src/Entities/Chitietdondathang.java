@@ -1,10 +1,11 @@
 package Entities;
-// Generated Jan 5, 2017 12:58:12 PM by Hibernate Tools 5.2.0.CR1
+// Generated Jan 11, 2017 11:39:30 PM by Hibernate Tools 5.2.0.CR1
+
+import static javax.persistence.GenerationType.IDENTITY;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -17,9 +18,9 @@ public class Chitietdondathang implements java.io.Serializable {
 
 	private Integer idCtddh;
 
-	private int maDonDatHang;
+	private Dondathang maDonDatHang;
 
-	private int maSanPham;
+	private Sanpham maSanPham;
 
 	private int soLuong;
 
@@ -30,9 +31,9 @@ public class Chitietdondathang implements java.io.Serializable {
 	public Chitietdondathang() {
 	}
 
-	public Chitietdondathang(int maDonDatHang, int maSanPham, int soLuong, long donGia, long thanhTien) {
-		this.maDonDatHang = maDonDatHang;
-		this.maSanPham = maSanPham;
+	public Chitietdondathang(Dondathang ddh, Sanpham sp, int soLuong, long donGia, long thanhTien) {
+		this.maDonDatHang = ddh;
+		this.maSanPham = sp;
 		this.soLuong = soLuong;
 		this.donGia = donGia;
 		this.thanhTien = thanhTien;
@@ -51,20 +52,20 @@ public class Chitietdondathang implements java.io.Serializable {
 	}
 
 	@Column(name = "MaDonDatHang", nullable = false)
-	public int getMaDonDatHang() {
+	public Dondathang getMaDonDatHang() {
 		return this.maDonDatHang;
 	}
 
-	public void setMaDonDatHang(int maDonDatHang) {
+	public void setMaDonDatHang(Dondathang maDonDatHang) {
 		this.maDonDatHang = maDonDatHang;
 	}
 
-	@Column(name = "MaSanPham", nullable = false)
-	public int getMaSanPham() {
-		return this.maSanPham;
+	public Chitietdondathang(Sanpham maSanPham) {
+		super();
+		this.maSanPham = maSanPham;
 	}
 
-	public void setMaSanPham(int maSanPham) {
+	public void setMaSanPham(Sanpham maSanPham) {
 		this.maSanPham = maSanPham;
 	}
 

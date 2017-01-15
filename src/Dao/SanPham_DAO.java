@@ -1,5 +1,6 @@
 package Dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -14,13 +15,13 @@ public class SanPham_DAO {
 
 	Session session = sessionFatory.getCurrentSession();
 
-	public List<Sanpham> ListSanPham() {
+	public ArrayList<Sanpham> ListSanPham() {
 		try {
 			if (!session.getTransaction().isActive()) {
 				session.getTransaction().begin();
 			}
 			Query query = session.createQuery("FROM Sanpham c ORDER BY c.maSanPham DESC");
-			return query.list();
+			return (ArrayList<Sanpham>) query.list();
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -29,13 +30,13 @@ public class SanPham_DAO {
 	}
 
 	// lay theo danh muc
-	public List<Sanpham> ListSanPhamDanhMuc(int maloai) {
+	public ArrayList<Sanpham> ListSanPhamDanhMuc(int maloai) {
 		try {
 			if (!session.getTransaction().isActive()) {
 				session.getTransaction().begin();
 			}
 			Query query = session.createQuery("FROM Sanpham c WHERE maLoai='" + maloai + "'");
-			return query.list();
+			return (ArrayList<Sanpham>) query.list();
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -57,13 +58,14 @@ public class SanPham_DAO {
 		}
 	}
 
-	public Sanpham getSanPham(int maSP) {
+	// lay 1 san pham
+	public Sanpham getSanPham(String maSanPham) {
 		Sanpham sp = null;
 		try {
 			if (!session.getTransaction().isActive()) {
 				session.getTransaction().begin();
 			}
-			sp = (Sanpham) session.createQuery("FROM Sanpham c WHERE maSanPham='" + maSP + "'").uniqueResult();
+			sp = (Sanpham) session.createQuery("FROM Sanpham c WHERE maSanPham='" + maSanPham + "'").uniqueResult();
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -71,5 +73,14 @@ public class SanPham_DAO {
 		}
 		return sp;
 
+	}
+
+	// phan trang
+	public List<Sanpham> getListByPage(List<Sanpham> arr, int start, int end) {
+		List<Sanpham> list = new ArrayList<Sanpham>();
+		for (int i = start; i < end; i++) {
+			list.add(arr.get(i));
+		}
+		return list;
 	}
 }

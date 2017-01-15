@@ -50,7 +50,7 @@ public class GetSanPham extends HttpServlet {
 		String maSp = request.getParameter("product");
 		String maSP = maSp;
 		SanPham_DAO sp1 = new SanPham_DAO();
-		Sanpham a = sp1.getSanPham(Integer.parseInt(maSp));
+		Sanpham a = sp1.getSanPham(maSp);
 		request.setAttribute("getProduct1", a);
 
 		// chuyen trang

@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="Entities.GioHang"%>
 <%@page import="Entities.Sanpham"%>
 <%@page import="Dao.SanPham_DAO"%>
@@ -10,14 +11,22 @@
 
 </head>
 <body>
-<%-- 
 	<%
-		GioHang cart = (GioHang) session.getAttribute("cart");
-		if (cart == null) {
-			cart = new GioHang();
-			session.setAttribute("cart", cart);
+		SanPham_DAO sp_dao = new SanPham_DAO();
+		List<Sanpham> arr = sp_dao.ListSanPhamDanhMuc(Integer.parseInt(request.getParameter("maloai")));
+		int start = 0;
+		int end = 9;
+		if (arr.size() < 9) {
+			end = arr.size();
 		}
-	%> --%>
+		if (request.getParameter("start") != null) {
+			start = Integer.parseInt(request.getParameter("start"));
+		}
+		if (request.getParameter("end") != null) {
+			end = Integer.parseInt(request.getParameter("end"));
+		}
+		List<Sanpham> list = sp_dao.getListByPage(arr, start, end);
+	%>
 	<div class="col-sm-9 padding-right">
 		<div class="features_items">
 			<!--features_items-->
@@ -32,11 +41,10 @@
 									alt="${sanpham.tenSanPham}" width="255px" height="270px" /></a>
 								<h2>${sanpham.giaBan}</h2>
 								<a href="Details.jsp"> <span>${sanpham.tenSanPham}</span></a>
-								
+
 								<!-- ?command=insert&maSanPham=${sanpham.getMaSanPham()}&maGioHang=${System.currentTimeMillis()} -->
-								<a href="GioHangController"
-									 class="btn btn-default adFd-to-cart"> <i
-									class="fa fa-shopping-cart"></i>Thêm Vào Giỏ
+								<a href="GioHangController" class="btn btn-default adFd-to-cart">
+									<i class="fa fa-shopping-cart"></i>Thêm Vào Giỏ
 								</a>
 							</div>
 						</div>
@@ -47,6 +55,9 @@
 
 		</div>
 		<!--features_items-->
+
+
+
 
 		<div class="category-tab">
 			<!--category-tab-->

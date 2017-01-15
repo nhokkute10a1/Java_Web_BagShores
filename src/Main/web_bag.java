@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import Dao.KhachHang_DAO;
+import Entities.Khachhang;
 
 public class web_bag {
 	public static void main(String[] args) throws ParseException {
@@ -59,12 +60,36 @@ public class web_bag {
 		// System.out.println(sp.getSanPham(3).getTenSanPham());
 		KhachHang_DAO kh_dao = new KhachHang_DAO();
 		// Date ngSinh = SimpleDateFormat.parse("02/02/1004");
-		SimpleDateFormat ngDateFormat = new SimpleDateFormat("dd/mm/yyyy");
-		Date ngSinh = ngDateFormat.parse("02/01/2017");
-		// kh_dao.ThemKhachHang(
-		// new Khachhang("nguyen", "hai", ngSinh, "nguyenhai", "123456", "abca@gmail.com",
-		// "0908120311", "abc"));
-		System.out.println(kh_dao.ktLogin("haibang", "123456"));
-
+//		SimpleDateFormat ngDateFormat = new SimpleDateFormat("dd/mm/yyyy");
+//		Date ngSinh = ngDateFormat.parse("02/01/2017");
+//		// kh_dao.ThemKhachHang(
+//		// new Khachhang("nguyen", "hai", ngSinh, "nguyenhai", "123456", "abca@gmail.com",
+//		// "0908120311", "abc"));
+//		System.out.println(kh_dao.ktLogin("haibang", "123456"));
+		
+		//Lay 1 khach hang
+//		String makh=String.valueOf(4);
+//		Khachhang kh=kh_dao.getKhachHang(makh);
+//		//System.out.println("Id: " + kh.getMaKhachHang());
+//		System.out.println("ho: " + kh.getHoKhachHang());
+//		System.out.println("ten: " + kh.getTenKhachHang());
+//		System.out.println("taikhoan: " + kh.getTaiKhoan());
+//		System.out.println("pass: " + kh.getMatKhau());
+//		System.out.println("ngaysinh: " + kh.getNgaySinh());
+//		System.out.println("sdt: " + kh.getSoDienThoai());
+//		System.out.println("email: " + kh.getEmail());
+//		System.out.println("diachi: " + kh.getDiaChi());
+		
+		//Lay gio he thong
+        Date thoiGian = new Date();
+ 
+        //Khai bao dinh dang ngay thang
+        SimpleDateFormat dinhDangThoiGian = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy ");
+ 
+        //parse ngay thang sang dinh dang va chuyen thanh string.
+        String hienThiThoiGian = dinhDangThoiGian.format(thoiGian.getTime());
+ 
+        System.out.println("" + hienThiThoiGian);
+		
 	}
 }

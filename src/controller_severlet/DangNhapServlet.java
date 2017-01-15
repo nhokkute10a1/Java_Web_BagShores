@@ -2,6 +2,7 @@ package controller_severlet;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -38,6 +39,9 @@ public class DangNhapServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 
 		String taikhoan = request.getParameter("taikhoan");
+		
+		String maKhachHang=request.getParameter("maKhachHang");
+		
 		String command = request.getParameter("command");
 
 		String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -59,6 +63,8 @@ public class DangNhapServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 
 		String taikhoan = request.getParameter("taikhoan");
+
+		String maKhachHang=request.getParameter("maKhachHang");
 		String matkhau = request.getParameter("matkhau");
 
 		String err = "";
@@ -79,15 +85,20 @@ public class DangNhapServlet extends HttpServlet {
 			if (err.length() == 0) {
 				HttpSession session = request.getSession();
 				session.setAttribute("taikhoan", taikhoan);
+				//session.setAttribute("maKhachHang", maKhachHang);
+				
 
-				response.sendRedirect("Index");
-				System.out.println("Đăng nhập thành công");
+				url = "/Index";
+				// response.sendRedirect("Index");
+				System.out.println("Login Success");
 			}
 			else {
 				url = "/account.jsp";
-				System.out.println("Đăng nhập thất bại");
+				System.out.println("Login Fails");
 			}
-			request.getRequestDispatcher("/account.jsp").forward(request, response);
+			// request.getRequestDispatcher("/account.jsp").forward(request, response);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+			rd.forward(request, response);
 		}
 		catch (Exception e) {
 			// TODO: handle exception

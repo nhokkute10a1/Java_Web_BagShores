@@ -2,6 +2,7 @@ package Dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -30,6 +31,24 @@ public class KhachHang_DAO {
 		}
 	}
 
+	public List<Khachhang> ListTTKh() {
+		try {
+			// session hiện tại có active hay chưa
+			if (!session.getTransaction().isActive()) {
+				session.getTransaction().begin();
+			}
+			// viet Query là sử dụng HQL
+			Query query = session.createQuery("From Khachhang");
+			return query.list();
+		}
+		catch (Exception ex) {
+			System.out.println(ex.getMessage());
+			return null;
+		}
+	}
+
+	// lay 1 kh
+
 	public Khachhang getKhachHang(String maKH) {
 		Khachhang kh = null;
 		try {
@@ -37,12 +56,28 @@ public class KhachHang_DAO {
 				session.getTransaction().begin();
 			}
 			kh = (Khachhang) session.createQuery("FROM Khachhang c WHERE maKhachHang='" + maKH + "'").uniqueResult();
+			return kh;
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());
 			return null;
 		}
-		return kh;
+
+	}
+	// lay 1 khach hang theo tai khoan
+	public Khachhang getTaiKhoanKhachHang(String taikhoan) {
+		Khachhang kh = null;
+		try {
+			if (!session.getTransaction().isActive()) {
+				session.getTransaction().begin();
+			}
+			kh = (Khachhang) session.createQuery("FROM Khachhang c WHERE taiKhoan='" + taikhoan + "'").uniqueResult();
+			return kh;
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+			return null;
+		}
 
 	}
 

@@ -1,5 +1,5 @@
 package Entities;
-// Generated Jan 5, 2017 12:58:12 PM by Hibernate Tools 5.2.0.CR1
+// Generated Jan 15, 2017 9:45:02 AM by Hibernate Tools 5.2.0.CR1
 
 import java.util.Date;
 import javax.persistence.Column;
@@ -20,9 +20,9 @@ public class Dondathang implements java.io.Serializable {
 
 	private Integer maDonDatHang;
 
-	private Date ngayDatHang;
+	private String  ngayDatHang;
 
-	private Date ngayGiao;
+	private String ngayGiao;
 
 	private boolean daThanhToan;
 
@@ -33,7 +33,7 @@ public class Dondathang implements java.io.Serializable {
 	public Dondathang() {
 	}
 
-	public Dondathang(Date ngayDatHang, Date ngayGiao, boolean daThanhToan, boolean tinhTrangGiao, int maKhachHang) {
+	public Dondathang(String ngayDatHang, String ngayGiao, boolean daThanhToan, boolean tinhTrangGiao, int maKhachHang) {
 		this.ngayDatHang = ngayDatHang;
 		this.ngayGiao = ngayGiao;
 		this.daThanhToan = daThanhToan;
@@ -53,23 +53,22 @@ public class Dondathang implements java.io.Serializable {
 		this.maDonDatHang = maDonDatHang;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
+	//@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "NgayDatHang", nullable = false, length = 19)
-	public Date getNgayDatHang() {
+	public String getNgayDatHang() {
 		return this.ngayDatHang;
 	}
 
-	public void setNgayDatHang(Date ngayDatHang) {
+	public void setNgayDatHang(String ngayDatHang) {
 		this.ngayDatHang = ngayDatHang;
 	}
 
-	@Temporal(TemporalType.DATE)
-	@Column(name = "NgayGiao", nullable = false, length = 10)
-	public Date getNgayGiao() {
+	@Column(name = "NgayGiao", nullable = false, length = 15)
+	public String getNgayGiao() {
 		return this.ngayGiao;
 	}
 
-	public void setNgayGiao(Date ngayGiao) {
+	public void setNgayGiao(String ngayGiao) {
 		this.ngayGiao = ngayGiao;
 	}
 

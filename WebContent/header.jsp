@@ -153,7 +153,7 @@
 					<li><a href="gallery.html">Gallery</a></li>
 					<li><a href="news.html">News</a></li>
 					<li><a href="codes.html">Codes</a></li>
-					<li><a href="contact.html">Contact</a></li>
+					<li><a href="contact.jsp">Liên Hệ</a></li>
 
 				</ul>
 				<!-- script-for-menu -->

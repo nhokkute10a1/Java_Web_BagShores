@@ -1,6 +1,7 @@
 package controller_severlet;
 
 import java.io.IOException;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -9,11 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import Dao.KhachHang_DAO;
 import Entities.Khachhang;
-import Tool.MD5_mahoaPas;
 
 /**
  * Servlet implementation class DangKyController
@@ -105,6 +104,7 @@ public class DangKyController extends HttpServlet {
 		// else {
 		if (kh_DAO.ktTaiKhoan(taikhoan) == true) {
 			taikhoanerr = "Tài khoản đã tồn tại !!!";
+			request.setAttribute("taikhoanerr", taikhoanerr);
 		}
 		// }
 		//
@@ -114,6 +114,10 @@ public class DangKyController extends HttpServlet {
 		// response.sendRedirect("/account.jsp");
 		// }
 		// else {
+		if (matkhau.length() > 6 || matkhau.length() < 12) {
+			matkhauerr = "Mật khẩu phải từ 6 đến 12 kí tự !!!";
+			request.setAttribute("matkhauerr", matkhauerr);
+		}
 		// if (matkhaunhaplai.length() > 6 || matkhaunhaplai.length() < 12) {
 		// matkhaunhaplai = "Mật khẩu phải từ 6 đến 12 kí tự !!!";
 		// }
@@ -124,6 +128,7 @@ public class DangKyController extends HttpServlet {
 		//
 		if (matkhaunhaplai.equals(matkhau)) {
 			matkhaunhaplaierr = "Mật khẩu nhập lại không khớp với mật khẩu !!!!";
+			request.setAttribute("matkhaunhaplaierr", matkhaunhaplaierr);
 		}
 		// if (matkhaunhaplaierr.length() > 0) {
 		// request.setAttribute("matkhaunhaplaierr", matkhaunhaplaierr);
@@ -140,6 +145,7 @@ public class DangKyController extends HttpServlet {
 		// else {
 		if (kh_DAO.ktEmail(email) == true) {
 			emailerr = "Địa chỉ email đã tồn tại !!!";
+			request.setAttribute("emailerr", emailerr);
 		}
 		// }
 
@@ -169,12 +175,7 @@ public class DangKyController extends HttpServlet {
 
 			if (hoKH.length() != 0 && tenKH.length() != 0 && taikhoan.length() != 0 && matkhau.length() != 0
 					&& email.length() != 0 && sdt.length() != 0 && diachi.length() != 0) {
-				kh_DAO.ThemKhachHang(new Khachhang(hoKH, tenKH, date, taikhoan, MD5_mahoaPas.maHoaDuLieu(matkhau),
-						email, sdt, diachi));
-
-				HttpSession session = request.getSession();
-				session.getAttribute(taikhoan);
-
+				kh_DAO.ThemKhachHang(new Khachhang(hoKH, tenKH, date, taikhoan, matkhau, email, sdt, diachi));
 				response.sendRedirect("Index");
 			}
 			else {
@@ -186,7 +187,6 @@ public class DangKyController extends HttpServlet {
 		}
 		catch (Exception e) {
 			e.printStackTrace();
-			log("Error", e);
 		}
 
 	}

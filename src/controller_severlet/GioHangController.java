@@ -77,7 +77,7 @@ public class GioHangController extends HttpServlet {
 				idBuy = Long.parseLong(request.getParameter("maGioHang"));
 			}
 
-			Sanpham sp = sp_dao.getSanPham(Integer.parseInt(maSanPham));
+			Sanpham sp = sp_dao.getSanPham(maSanPham);
 
 			switch (command) {
 			case "insert":
@@ -90,7 +90,9 @@ public class GioHangController extends HttpServlet {
 					listMua.add(idBuy);
 				}
 				// url = "/cart.jsp";
-				response.sendRedirect("Index");
+				// response.sendRedirect("Index");//ngay dong nay, sendRediret rui thi ko
+				// redriẻct dc nua
+				url = "/Index";
 				break;
 			case "plus":
 				if (listMua == null) {
@@ -128,11 +130,12 @@ public class GioHangController extends HttpServlet {
 				url = "/cart.jsp";
 				break;
 			default:
+				url = "/cart.jsp";
 				break;
 			}
 
 			RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
-			rd.forward(request, response);
+			rd.forward(request, response);// day forw
 		}
 		catch (Exception e) {
 			// TODO: handle exception
