@@ -64,7 +64,7 @@ public class DangNhapServlet extends HttpServlet {
 
 		String taikhoan = request.getParameter("taikhoan");
 
-		String maKhachHang=request.getParameter("maKhachHang");
+		//String maKhachHang=request.getParameter("maKhachHang");
 		String matkhau = request.getParameter("matkhau");
 
 		String err = "";

@@ -193,7 +193,7 @@
 										href="GioHangController?command=cancel">Hủy Đơn Hàng</a>
 								</div>
 								<div class="col-sm-6" style="background-color:lavenderblush;">
-									<a class="btn btn-success"  style="text-align: right;" href="CheckoutServlet?maKhachHang=${khachhang.maKhachHang}">Thanh
+									<a class="btn btn-success"  style="text-align: right;" href="CheckoutServlet">Thanh
 										Toán</a>
 								</div>
 							</div>

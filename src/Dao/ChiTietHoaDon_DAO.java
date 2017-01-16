@@ -11,7 +11,7 @@ public class ChiTietHoaDon_DAO {
 
 	Session session = sessionFatory.getCurrentSession();
 
-	public void themHoaDon(Chitietdondathang ctdh) {
+	public void themCTHoaDon(Chitietdondathang ctdh) {
 		try {
 			if (!session.getTransaction().isActive()) {
 				session.getTransaction().begin();
@@ -20,7 +20,8 @@ public class ChiTietHoaDon_DAO {
 			session.getTransaction().commit();
 		}
 		catch (Exception e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace(System.out);
+			//System.out.println(e.getMessage());
 		}
 	}
 }

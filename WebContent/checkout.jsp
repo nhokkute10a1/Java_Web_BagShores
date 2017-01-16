@@ -60,8 +60,7 @@
 							<td class="field-label col-xs-3 active"><label
 								class="control-label">Mã khách hàng:</label></td>
 							<td class="col-xs-6">
-								<p>${khachhang.maKhachHang}
-								<p>
+								<p>${khachhang.maKhachHang}</p>
 							</td>
 						</tr>
 
@@ -69,8 +68,7 @@
 							<td class="field-label col-xs-3 active"><label
 								class="control-label">Tên khách hàng:</label></td>
 							<td class="col-xs-6">
-								<p>${khachhang.tenKhachHang}
-								<p>
+								<p>${khachhang.tenKhachHang}</p>
 							</td>
 						</tr>
 						<tr>
@@ -97,8 +95,7 @@
 								<!-- <input type="text" style="width: 60%"
 								class="form-control" name="soDienThoai" validate-on="blur"
 								required required-message="'nhập điện thoại'" /> -->
-								<p>${khachhang.soDienThoai}
-								<p>
+								<p>${khachhang.soDienThoai}</p>
 							</td>
 						</tr>
 						<tr>

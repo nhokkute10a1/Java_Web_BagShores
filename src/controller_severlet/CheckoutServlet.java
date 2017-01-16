@@ -72,30 +72,40 @@ public class CheckoutServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		// // don dat hang
-		String ngayDatHang=request.getParameter("ngayDatHang");
+		String ngayDatHang = request.getParameter("ngayDatHang");
 		String ngayGiao = request.getParameter("ngayGiao");
 
 		// HttpSession session = request.getSession();
 		GioHang cart = (GioHang) session.getAttribute("cart");
 
 		// don dat hang
-		String maKhachHang = (String) session.getAttribute("maKhachHang");
+		String taikhoan = (String) session.getAttribute("taikhoan");
+		// request.setAttribute("maKhachHang", maKhachHang);
+
 		String tongTien = Long.toString((long) cart.thanhTien());
 		// bat loi
 
 		try {
-			Date date = new Date();    
-			// String maDonDatHang = "" + date.getTime();
+			Date thoiGian = new Date();
+			SimpleDateFormat dinhDangThoiGian = new SimpleDateFormat("dd/MM/yyyy ");
+			
+			String maDonDatHang = dinhDangThoiGian.format(thoiGian.getTime());
+
+			//String maDonDatHang = "" + date.getTime();
 			Khachhang kh = new Khachhang();
 			// ma tai khoan bi null
-			kh.setMaKhachHang(kh_dao.getKhachHang(maKhachHang).getMaKhachHang());
-			Dondathang ddh = new Dondathang(ngayDatHang, ngayGiao, true, true,
-					Integer.parseInt(maKhachHang));
+			kh.setTaiKhoan(kh_dao.getTaiKhoanKhachHang(taikhoan).getTaiKhoan());
 
-			// ddh.setNgayDatHang(maDonDatHang);
-			SendMail sm = new SendMail();
-			sm.sendMail((String) session.getAttribute("tenKhachHang"), "Thong  tin mua hang", tongTien);
+			// kh.setMaKhachHang(kh_dao.getKhachHang(taikhoan).getMaKhachHang());
+			Dondathang ddh = new Dondathang(maDonDatHang, ngayDatHang, ngayGiao, false, false, taikhoan);
+
+			// mail k gui dc
+			// SendMail sm = new SendMail();
+			// sm.sendMail((String) session.getAttribute("tenKhachHang"), "Thong tin mua
+			// hang", tongTien);
+
 			// them ddh
+			ddh.setMaDonDatHang(maDonDatHang);
 
 			ddh_dao.themHoaDon(ddh);
 
@@ -104,14 +114,15 @@ public class CheckoutServlet extends HttpServlet {
 				Sanpham sp = new Sanpham();
 				sp.setMaSanPham(ds.getKey().getMaSanPham());
 				// them ctddh
-				long thanhtien = ds.getValue() * ds.getKey().getGiaBan();
-
-				ctddh_dao.themHoaDon(new Chitietdondathang(ddh, sp, ds.getValue(), ds.getKey().getGiaBan(), thanhtien));
+				// long thanhtien = ;
+				Chitietdondathang ctddh = new Chitietdondathang(ddh, sp, ds.getValue(), ds.getKey().getGiaBan(),
+						ds.getValue() * ds.getKey().getGiaBan());
+				ctddh_dao.themCTHoaDon(ctddh);
 			}
-
-			session.removeAttribute("cart");
-			session.setAttribute("cart", new GioHang());
 			
+//			session.removeAttribute("cart");
+//			session.setAttribute("cart", new GioHang());
+
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/Index");
 			rd.forward(request, response);
 		}
@@ -119,7 +130,6 @@ public class CheckoutServlet extends HttpServlet {
 			// TODO: handle exception
 			log("error", e);
 		}
-		response.sendRedirect("/Index");
 
 	}
 

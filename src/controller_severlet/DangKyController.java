@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import Dao.KhachHang_DAO;
 import Entities.Khachhang;
+import Tool.MD5_mahoaPas;
 
 /**
  * Servlet implementation class DangKyController
@@ -167,7 +169,7 @@ public class DangKyController extends HttpServlet {
 		// request.setAttribute("diachierr", diachierr);
 		// }
 
-		// String url = "/account.jsp";
+		String url = "/account.jsp";
 		try {
 
 			// Date ngSinh = ngDateFormat.parse("02/01/2017");
@@ -175,15 +177,19 @@ public class DangKyController extends HttpServlet {
 
 			if (hoKH.length() != 0 && tenKH.length() != 0 && taikhoan.length() != 0 && matkhau.length() != 0
 					&& email.length() != 0 && sdt.length() != 0 && diachi.length() != 0) {
-				kh_DAO.ThemKhachHang(new Khachhang(hoKH, tenKH, date, taikhoan, matkhau, email, sdt, diachi));
-				response.sendRedirect("Index");
+				kh_DAO.ThemKhachHang(new Khachhang(hoKH, tenKH, date, taikhoan, MD5_mahoaPas.maHoaDuLieu(matkhau), email, sdt, diachi));
+				//response.sendRedirect("Index");
+				url = "/Index";
+				System.out.println("SignUp Success");
 			}
 			else {
-				response.sendRedirect("account.jsp");
+				url = "/account.jsp";
+				//response.sendRedirect("account.jsp");
+				System.out.println("SignUp Fails");
 			}
-			request.getRequestDispatcher("/account.jsp").forward(request, response);
-			// RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
-			// rd.forward(request, response);
+			//request.getRequestDispatcher("/account.jsp").forward(request, response);
+			 RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
+			 rd.forward(request, response);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
