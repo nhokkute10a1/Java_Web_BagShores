@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.TreeMap;
 
 import javax.servlet.RequestDispatcher;
@@ -86,12 +87,12 @@ public class CheckoutServlet extends HttpServlet {
 		// bat loi
 
 		try {
-			Date thoiGian = new Date();
-			SimpleDateFormat dinhDangThoiGian = new SimpleDateFormat("dd/MM/yyyy ");
+			Date date = new Date();
+			//SimpleDateFormat dinhDangThoiGian = new SimpleDateFormat("dd/MM/yyyy ");
 			
-			String maDonDatHang = dinhDangThoiGian.format(thoiGian.getTime());
+			//String maDonDatHang = dinhDangThoiGian.format(thoiGian.getTime());
 
-			//String maDonDatHang = "" + date.getTime();
+			String maDonDatHang = "" + date.getTime();
 			Khachhang kh = new Khachhang();
 			// ma tai khoan bi null
 			kh.setTaiKhoan(kh_dao.getTaiKhoanKhachHang(taikhoan).getTaiKhoan());
@@ -100,28 +101,34 @@ public class CheckoutServlet extends HttpServlet {
 			Dondathang ddh = new Dondathang(maDonDatHang, ngayDatHang, ngayGiao, false, false, taikhoan);
 
 			// mail k gui dc
-			// SendMail sm = new SendMail();
-			// sm.sendMail((String) session.getAttribute("tenKhachHang"), "Thong tin mua
-			// hang", tongTien);
-
-			// them ddh
+			
 			ddh.setMaDonDatHang(maDonDatHang);
+			
+			//SendMail sm = new SendMail();
+			//sm.sendMail((String) session.getAttribute("taikhoan"), "Thong  tin mua hang", tongTien);
+			
+			
+			// them ddh
+			//ddh.setMaDonDatHang(maDonDatHang);
 
 			ddh_dao.themHoaDon(ddh);
-
+			//String sp=request.getParameter("maSanPham");
 			TreeMap<Sanpham, Integer> list = cart.getListSanPham();
-			for (Map.Entry<Sanpham, Integer> ds : list.entrySet()) {
-				Sanpham sp = new Sanpham();
-				sp.setMaSanPham(ds.getKey().getMaSanPham());
-				// them ctddh
-				// long thanhtien = ;
-				Chitietdondathang ctddh = new Chitietdondathang(ddh, sp, ds.getValue(), ds.getKey().getGiaBan(),
-						ds.getValue() * ds.getKey().getGiaBan());
-				ctddh_dao.themCTHoaDon(ctddh);
+			for (Entry<Sanpham, Integer> ds : list.entrySet()) {
+				//Sanpham sp = new Sanpham();
+				//sp.setMaSanPham(ds.getKey().getMaSanPham());
+				String maDDH=ddh.getMaDonDatHang();
+				int masp=ds.getKey().getMaSanPham();
+				int soluong=ds.getValue();
+				long dongia=ds.getKey().getGiaBan();
+				long thanhtien=ds.getKey().getGiaBan()*ds.getValue();
+				ctddh_dao.ThemChiTietDonDatHang(new Chitietdondathang(maDDH, masp, soluong, dongia, thanhtien) );
+//						ddh.getMaDonDatHang(), sp.getMaSanPham(), ds.getValue(), ds
+//						.getKey().getGiaBan(), ds.getKey().getGiaBan()*ds.getValue()));
 			}
 			
-//			session.removeAttribute("cart");
-//			session.setAttribute("cart", new GioHang());
+			session.removeAttribute("cart");
+			session.setAttribute("cart", new GioHang());
 
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/Index");
 			rd.forward(request, response);

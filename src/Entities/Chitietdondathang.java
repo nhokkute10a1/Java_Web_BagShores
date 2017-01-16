@@ -1,11 +1,10 @@
 package Entities;
-// Generated Jan 11, 2017 11:39:30 PM by Hibernate Tools 5.2.0.CR1
-
-import static javax.persistence.GenerationType.IDENTITY;
+// Generated Jan 17, 2017 12:48:47 AM by Hibernate Tools 5.2.0.CR1
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -18,9 +17,9 @@ public class Chitietdondathang implements java.io.Serializable {
 
 	private Integer idCtddh;
 
-	private Dondathang maDonDatHang;
+	private String maDonDatHang;
 
-	private Sanpham maSanPham;
+	private int maSanPham;
 
 	private int soLuong;
 
@@ -31,9 +30,9 @@ public class Chitietdondathang implements java.io.Serializable {
 	public Chitietdondathang() {
 	}
 
-	public Chitietdondathang(Dondathang ddh, Sanpham sp, int soLuong, long donGia, long thanhTien) {
-		this.maDonDatHang = ddh;
-		this.maSanPham = sp;
+	public Chitietdondathang(String maDonDatHang, int maSanPham, int soLuong, long donGia, long thanhTien) {
+		this.maDonDatHang = maDonDatHang;
+		this.maSanPham = maSanPham;
 		this.soLuong = soLuong;
 		this.donGia = donGia;
 		this.thanhTien = thanhTien;
@@ -51,21 +50,21 @@ public class Chitietdondathang implements java.io.Serializable {
 		this.idCtddh = idCtddh;
 	}
 
-	@Column(name = "MaDonDatHang", nullable = false)
-	public Dondathang getMaDonDatHang() {
+	@Column(name = "MaDonDatHang", nullable = false, length = 25)
+	public String getMaDonDatHang() {
 		return this.maDonDatHang;
 	}
 
-	public void setMaDonDatHang(Dondathang maDonDatHang) {
+	public void setMaDonDatHang(String maDonDatHang) {
 		this.maDonDatHang = maDonDatHang;
 	}
 
-	public Chitietdondathang(Sanpham maSanPham) {
-		super();
-		this.maSanPham = maSanPham;
+	@Column(name = "MaSanPham", nullable = false)
+	public int getMaSanPham() {
+		return this.maSanPham;
 	}
 
-	public void setMaSanPham(Sanpham maSanPham) {
+	public void setMaSanPham(int maSanPham) {
 		this.maSanPham = maSanPham;
 	}
 

@@ -42,7 +42,6 @@ public class SendMail {
 	public static void main(String[] args) {
 		sendMail("blackangelofdeath944@gmail.com", "sendmail ", "hello !! Nine Tailed Fox");
 	}
-
 	// khi xac thuc tai khoan dang ki
 	// lay lai mat khau
 	// khi mua hang

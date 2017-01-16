@@ -28,9 +28,9 @@
 			//TreeMap<SanPham, Integer> list = cart.getList();
 			//NumberFormat nf = NumberFormat.getInstance();
 			//nf.setMinimumIntegerDigits(0);
-			ArrayList<Long> sum = new ArrayList();
+			//ArrayList<Long> sum = new ArrayList();
 			//ArrayList<Double> sum = new ArrayList();
-			Long abc;
+			//Long abc;
 			Khachhang kh = (Khachhang) session.getAttribute("kh");
 			session.setAttribute("kh", kh);
 	%>
@@ -192,18 +192,11 @@
 						</a></td>
 
 					</tr>
-
-
-					<%
-						//abc = ds.getValue() * ds.getKey().getDon_gia();
-								abc = ds.getValue() * ds.getKey().getGiaBan();
-					%>
-					<%
-						sum.add(abc);
-					%>
 					<%
 						}
 					%>
+
+
 					<tr>
 						<td colspan="4">&nbsp;</td>
 						<td colspan="2">
@@ -230,20 +223,14 @@
 				</tbody>
 			</table>
 		</div>
-
 		<!--Checkout-->
-		<div class="payment-options">
-			<span> <label><input type="checkbox"> Direct
-					Bank Transfer</label>
-			</span> <span> <label><input type="checkbox"> Check
-					Payment</label>
-			</span> <span> <label><input type="checkbox"> Paypal</label>
-			</span>
-		</div>
+		
 	</div>
 	</section>
 	<!--/#cart_items-->
-
+	<%
+		}
+	%>
 	<!--/Footer-->
 	<jsp:include page="footer.jsp"></jsp:include>
 
@@ -256,9 +243,7 @@
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="js/bootstrap.js"></script>
 	<!--/Footer-->
-	<%
-		}
-	%>
+
 	<script src="js/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/jquery.scrollUp.min.js"></script>

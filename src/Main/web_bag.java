@@ -4,7 +4,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import Dao.ChiTietHoaDon_DAO;
 import Dao.KhachHang_DAO;
+import Entities.Chitietdondathang;
 import Entities.Khachhang;
 
 public class web_bag {
@@ -81,15 +83,21 @@ public class web_bag {
 //		System.out.println("diachi: " + kh.getDiaChi());
 		
 		//Lay gio he thong
-        Date thoiGian = new Date();
- 
-        //Khai bao dinh dang ngay thang
-        SimpleDateFormat dinhDangThoiGian = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy ");
- 
-        //parse ngay thang sang dinh dang va chuyen thanh string.
-        String hienThiThoiGian = dinhDangThoiGian.format(thoiGian.getTime());
- 
-        System.out.println("" + hienThiThoiGian);
+//        Date thoiGian = new Date();
+// 
+//        //Khai bao dinh dang ngay thang
+//        SimpleDateFormat dinhDangThoiGian = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy ");
+// 
+//        //parse ngay thang sang dinh dang va chuyen thanh string.
+//        String hienThiThoiGian = dinhDangThoiGian.format(thoiGian.getTime());
+// 
+//        System.out.println("" + hienThiThoiGian);
 		
+		//them san pham vao chi tiet don dat hang
+		ChiTietHoaDon_DAO ctddh_dao=new ChiTietHoaDon_DAO();
+		long giaban=Long.parseLong("210000");
+		long thanhtien=Long.parseLong("600000");
+		String maddh="1484547856311";
+		ctddh_dao.ThemChiTietDonDatHang(new Chitietdondathang(maddh, 1, 3, giaban, thanhtien));
 	}
 }
