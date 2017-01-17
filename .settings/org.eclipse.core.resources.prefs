@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//WebContent/admin/sidebar.jsp=UTF-8
 encoding//WebContent/checkout.jsp=UTF-8
 encoding//src/Dao/DonDatHang_DAO.java=UTF-8
 encoding//src/Dao/KhachHang_DAO.java=UTF-8
@@ -7,6 +8,7 @@ encoding//src/Dao/NhaSanXuat_DAO.java=UTF-8
 encoding//src/Main/web_bag.java=UTF-8
 encoding//src/Model/HibernateUtil.java=UTF-8
 encoding//src/Tool/SendMail.java=UTF-8
+encoding//src/controller_severlet/AdminServlet.java=UTF-8
 encoding//src/controller_severlet/DangKyController.java=UTF-8
 encoding//src/controller_severlet/DangNhapServlet.java=UTF-8
 encoding//src/controller_severlet/GioHangController.java=UTF-8

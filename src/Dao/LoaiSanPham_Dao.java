@@ -10,20 +10,7 @@ import Entities.Loaisanpham;
 import Model.HibernateUtil;
 
 public class LoaiSanPham_Dao {
-	// public static List<Entities.Loaisanpham> getAll() {
-	// List<Loaisanpham> data = new ArrayList<Loaisanpham>();
-	// try {
-	// Session sess = HibernateUtil.getSessionFactory().openSession();
-	// //Lay du lieu bang dung hibernate
-	// sess.getTransaction().begin();
-	// //lay danh sach loai sp
-	// data = sess.createCriteria(Loaisanpham.class).list();
-	// }
-	// catch (Exception ex) {
-	// ex.printStackTrace();
-	// }
-	// return data;
-	// }
+
 	private SessionFactory sessionFatory = HibernateUtil.getSessionFactory();
 
 	Session session = sessionFatory.getCurrentSession();
@@ -43,4 +30,5 @@ public class LoaiSanPham_Dao {
 			return null;
 		}
 	}
+	
 }

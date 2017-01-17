@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import Dao.Admin_DAO;
 import Dao.ChiTietHoaDon_DAO;
 import Dao.KhachHang_DAO;
 import Entities.Chitietdondathang;
@@ -94,10 +95,14 @@ public class web_bag {
 //        System.out.println("" + hienThiThoiGian);
 		
 		//them san pham vao chi tiet don dat hang
-		ChiTietHoaDon_DAO ctddh_dao=new ChiTietHoaDon_DAO();
-		long giaban=Long.parseLong("210000");
-		long thanhtien=Long.parseLong("600000");
-		String maddh="1484547856311";
-		ctddh_dao.ThemChiTietDonDatHang(new Chitietdondathang(maddh, 1, 3, giaban, thanhtien));
+//		ChiTietHoaDon_DAO ctddh_dao=new ChiTietHoaDon_DAO();
+//		long giaban=Long.parseLong("210000");
+//		long thanhtien=Long.parseLong("600000");
+//		String maddh="1484547856311";
+//		ctddh_dao.ThemChiTietDonDatHang(new Chitietdondathang(maddh, 1, 3, giaban, thanhtien));
+		
+		//kt tai khoan
+		Admin_DAO ad_dao = new Admin_DAO();
+		System.out.println(ad_dao.ktLogin("admin", "123456"));
 	}
 }

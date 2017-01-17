@@ -2,10 +2,16 @@
 <!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
 
 <hibernate-reverse-engineering>
-  <table-filter match-catalog="qlbantuisach" match-name="chitietdondathang"/>
-  <table-filter match-catalog="qlbantuisach" match-name="dondathang"/>
-  <table-filter match-catalog="qlbantuisach" match-name="khachhang"/>
-  <table-filter match-catalog="qlbantuisach" match-name="loaisanpham"/>
-  <table-filter match-catalog="qlbantuisach" match-name="nhasanxuat"/>
-  <table-filter match-catalog="qlbantuisach" match-name="sanpham"/>
+
+	<table-filter match-catalog="qlbantuisach"
+		match-name="chitietdondathang" />
+	<table-filter match-catalog="qlbantuisach" match-name="dondathang" />
+	<table-filter match-catalog="qlbantuisach" match-name="khachhang" />
+	<table-filter match-catalog="qlbantuisach" match-name="loaisanpham" />
+	<table-filter match-catalog="qlbantuisach" match-name="nhasanxuat" />
+	<table-filter match-catalog="qlbantuisach" match-name="sanpham" />
+	<table-filter match-name="taikhoanadmin" match-catalog="qlbantuisach"></table-filter>
+	<table-filter match-name="vaitro" match-catalog="qlbantuisach"></table-filter>
+	<table-filter match-name="vaitronguoidung" match-catalog="qlbantuisach"></table-filter>
+
 </hibernate-reverse-engineering>

@@ -4,16 +4,14 @@
 <hibernate-configuration>
  <session-factory>
   <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/qlbantuisach</property>
+  <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/qlbantuisach</property>
   <property name="hibernate.connection.username">root</property>
   <property name="hibernate.connection.password"/>
   <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
   <property name="hibernate.current_session_context_class">thread</property>
-  
-<!--   <property name="hibernate.connection.url">https://mysql141691-demo1.j.layershift.co.uk </property> -->
-<!--   <property name="hibernate.connection.username">root</property> -->
-<!--   <property name="hibernate.connection.password">ucfSVynurG</property> -->
-  
+  <!--   <property name="hibernate.connection.url">https://mysql141691-demo1.j.layershift.co.uk </property> 
+   <property name="hibernate.connection.username">root</property> 
+   <property name="hibernate.connection.password">ucfSVynurG</property> -->
   <mapping class="Entities.Sanpham"/>
   <mapping class="Entities.Chitietdondathang"/>
   <mapping class="Entities.Dondathang"/>
@@ -22,5 +20,6 @@
   <mapping class="Entities.Nhasanxuat"/>
   <mapping class="Entities.Vaitro"/>
   <mapping class="Entities.Vaitronguoidung"/>
+  <mapping class="Entities.Taikhoanadmin"/>
  </session-factory>
 </hibernate-configuration>
